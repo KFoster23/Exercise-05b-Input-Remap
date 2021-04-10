@@ -18,8 +18,6 @@ func _toggled(button_pressed):
 
 
 func _unhandled_key_input(event):
-	# Note that you can use the _input callback instead, especially if
-	# you want to work with gamepads.
 	remap_action_to(event)
 	pressed = false
 
@@ -29,5 +27,6 @@ func display_current_key():
 
 
 func remap_action_to(event):
-	# Input remapping goes here
+	InputMap.action_erase_events(action)
+	InputMap.action_add_event(action, event)
 	text = "%s Key" % event.as_text()
